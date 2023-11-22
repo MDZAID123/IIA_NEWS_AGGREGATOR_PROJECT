@@ -5,7 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import { navbarBrand, navs } from "../../config/config";
-import logoImage from "../Images/logoImage.png";
+import logoImage from "../Images/logoImage4.png";
 import {
   btnColor,
   formInput,
@@ -52,7 +52,7 @@ function NavBar() {
         expanded={!isCollapsed}
       >
         <Navbar.Brand style={navBrand} href="/">
-          <img src={logoImage} alt="Logo" style={logo} />
+          <img src={logoImage} alt="Logo" style={{ ...logo, width: '160px', height: '40px' }} />
           {navbarBrand}
         </Navbar.Brand>
         {isCollapsed && (

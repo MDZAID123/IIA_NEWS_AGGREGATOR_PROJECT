@@ -1,6 +1,8 @@
 # News App
 
-![](https://github.com/simranlotey/react-news-app/blob/master/src/components/Images/demo.png)
+
+![Screenshot 2023-11-22 205436](https://github.com/MDZAID123/IIA_NEWS_AGGREGATOR_PROJECT/assets/88608399/92a39c00-59db-4881-9f98-836185420fe8)
+
 
 This News App is powered by the GNews public API and provides users with the latest news articles from around the world. The app offers a user-friendly interface where news articles are organized by categories, allowing users to easily browse and read articles of their interest. 
 

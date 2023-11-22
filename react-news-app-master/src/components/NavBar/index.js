@@ -1,5 +1,5 @@
 export const navBar = {
-  backgroundColor: "rgb(41, 47, 51)",
+  backgroundColor: "rgb(81, 68, 135)",
   padding: "20px",
   fontSize: "18px",
 };

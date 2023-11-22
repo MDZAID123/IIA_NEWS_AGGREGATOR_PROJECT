@@ -9,6 +9,7 @@ import { Col, Row } from "react-bootstrap";
 import { header } from "../../config/config";
 import { endpointPath } from "../../config/api";
 import { Container, Header, card } from "./index";
+import  PartnerItem from "../PartnerItem/PartnerItem";
 
 function News(props) {
   const { newscategory, country } = props;
@@ -25,16 +26,53 @@ function News(props) {
 
   const updatenews = async () => {
     try {
-      const response = await axios.get(endpointPath(country, category));
+      // const response = await axios.get(endpointPath(country, category));
+
+
+
+      let endp="http://localhost:8800/books";
+      
+
+      switch(category){
+        case "science":
+          endp="http://localhost:8800/books/science";
+          break;
+        case "business":
+          endp="http://localhost:8800/books/business";
+          break;
+        case "entertainment":
+          endp="http://localhost:8800/books/entertainment";
+          break;
+
+        case "sports":
+          endp="http://localhost:8800/books/sports";
+          break;
+
+        case "partners":
+          endp="http://localhost:8800/books/partners";
+          break;
+
+        default:
+          break;
+      }
+      
+
+
+
+       const response = await axios.get(endp);
+
+       console.log(response.data);
+       console.log(category);
+
       setLoading(true);
       const parsedData = response.data;
-      setArticles(parsedData.articles);
+      setArticles(parsedData);
       setLoading(false);
     } catch (error) {
       console.error(error);
     }
   };
-
+  updatenews();
   useEffect(() => {
     updatenews();
     // eslint-disable-next-line
@@ -46,24 +84,45 @@ function News(props) {
         <Loading />
       ) : (
         <>
-          <Header>{header(capitaLize(category))}</Header>
+          {/* <Header>{header(capitaLize(category))}</Header> */}
           <Container>
+            {articles[0].title?
+            (<Header>{header(capitaLize(category))}</Header>):(
+              <Header>Our partners</Header>
+
+            )}
             <Row>
-              {articles.map((element) => {
+              
+              {articles.slice(0, Math.min(30, articles.length)).map((element) => {
                 return (
                   <Col sm={12} md={6} lg={4} xl={3} style={card} key={uuidv4()}>
+                    
+                    {
+
+
+                      
+                    element.frequency? (
+                      <PartnerItem
+                      source={element.source}
+                      frequency={element.frequency}
+                      
+
+                      />
+
+                    ):(
                     <NewsItem
                       title={element.title}
-                      description={element.description}
-                      published={element.publishedAt}
-                      channel={element.source.name}
+                      description={element.snippet}
+                      published={element.date}
+                      channel={element.source}
                       alt="News image"
-                      publishedAt={element.publishedAt}
-                      imageUrl={
+                      publishedAt={element.source}
+                      image={
                         element.image === null ? NullImage : element.image
                       }
                       urlNews={element.url}
-                    />
+                    />)
+              }
                   </Col>
                 );
               })}

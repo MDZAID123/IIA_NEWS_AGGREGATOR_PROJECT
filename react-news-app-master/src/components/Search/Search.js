@@ -49,19 +49,19 @@ function Search() {
           </Header>
           <Container>
             <Row>
-              {articles?.articles?.map((element) => {
+              {articles?.map((element) => {
                 return (
                   <Col sm={12} md={6} lg={4} xl={3} style={card} key={uuidv4()}>
                     <NewsItem
                       title={element.title}
-                      description={element.description}
-                      published={element.publishedAt}
-                      channel={element.source.name}
+                      description={element.snippet}
+                      published={element.date}
+                      channel={element.source}
                       alt="News image"
-                      publishedAt={element.publishedAt}
-                      imageUrl={
-                        element.image === null ? NullImage : element.image
-                      }
+                      publishedAt={element.source}
+                      // imageUrl={
+                      //   element.image === null ? NullImage : element.image
+                      // }
                       urlNews={element.url}
                     />
                   </Col>

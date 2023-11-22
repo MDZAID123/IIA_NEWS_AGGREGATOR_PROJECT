@@ -6,12 +6,12 @@ import { card, img, btn, text } from "./index";
 import "./style.css"
 
 function NewsItem(props) {
-  const { imageUrl, alt, description, title, channel, published, urlNews } = props;
+  const {  alt, description, title, channel, published, urlNews,image } = props;
 
   return (
     <>
       <Card style={card} >
-        <Card.Img style={img} variant="top" src={imageUrl} alt={alt} />
+        <Card.Img style={img} variant="top" src={image} alt={alt} />
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text style={text}>{description}</Card.Text>
@@ -26,7 +26,7 @@ function NewsItem(props) {
 }
 
 NewsItem.propTypes = {
-  imageUrl: PropTypes.string,
+  // imageUrl: PropTypes.string,
   alt: PropTypes.string,
   description: PropTypes.string,
   title: PropTypes.string,

@@ -30,7 +30,7 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/books",(req,res)=>{
-    const q="SELECT * FROM global_view"
+    const q="SELECT * FROM global_view where image IS NOT NULL UNION ALL SELECT * FROM global_view WHERE image IS NULL;"
     db.query(q,(err,data)=>{
         if(err) return res.json(err)
         return res.json(data)
@@ -38,19 +38,81 @@ app.get("/books",(req,res)=>{
 })
 
 
-app.post("/books",(req,res)=>{
-    console.log(req.body)
-    const q="INSERT INTO books (`title`,`desc`,`price`,`cover`) VALUES (?)";
-    const values=[req.body.title,
-    req.body.desc,
-    res.body.price,
-    req.body.cover,]
-    db.query(q,[values],(err,data)=>{
-        if(err) return res.json(err)
-        return res.json("Book has been created.");
+app.get("/books/science", (req, res) => {
+    const q = "SELECT * FROM global_view WHERE category='science'";
+    db.query(q, (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+ });
 
-    })
-})
+app.get("/books/sports", (req, res) => {
+    const q = "SELECT * FROM global_view WHERE category='sports'";
+    db.query(q, (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+ });
+
+app.get("/books/business", (req, res) => {
+    const q = "SELECT * FROM global_view WHERE category='business'";
+    db.query(q, (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+ });
+
+app.get("/books/entertainment", (req, res) => {
+    const q = "SELECT * FROM global_view WHERE category='entertainment'";
+    db.query(q, (err, data) => {
+        if(err) return res.json(err);
+        return res.json(data);
+    });
+ });
+ app.get("/books/search", (req, res) => {
+    const { query } = req.query;
+
+    // Use parameterized query to prevent SQL injection
+    const q = "SELECT * FROM global_view WHERE title LIKE ?";
+    
+    // Execute the SQL query with the parameter
+    db.query(q, [`%${query}%`], (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+//returning our news parteners
+
+ app.get("/books/partners", (req, res) => {
+    // const { query } = req.query;s
+
+    // Use parameterized query to prevent SQL injection
+    const q = "SELECT distinct(source), COUNT(*) as frequency FROM global_View GROUP BY source ORDER BY frequency desc";
+    
+    // Execute the SQL query with the parameter
+    db.query(q, (err, data) => {
+        if (err) return res.json(err);
+        return res.json(data);
+    });
+});
+
+ 
+
+
+// app.post("/books",(req,res)=>{
+//     console.log(req.body)
+//     const q="INSERT INTO books (`title`,`desc`,`price`,`cover`) VALUES (?)";
+//     const values=[req.body.title,
+//     req.body.desc,
+//     res.body.price,
+//     req.body.cover,]
+//     db.query(q,[values],(err,data)=>{
+//         if(err) return res.json(err)
+//         return res.json("Book has been created.");
+
+//     })
+// })
 //an error occured by default we cannot send data to our express server
 
 

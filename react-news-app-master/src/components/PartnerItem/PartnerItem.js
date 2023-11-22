@@ -15,7 +15,7 @@ function PartnerItem(props) {
         <Card.Body>
           <Card.Title>{source}</Card.Title>
           {/* <Card.Text style={text}>{description}</Card.Text> */}
-          <PartnerDetails channel={source} published={frequency} />
+          {/* <PartnerDetails channel={source} published={frequency} /> */}
           {/* <Button href={urlNews} target="_blank" style={btn}>
             Read more →
           </Button> */}

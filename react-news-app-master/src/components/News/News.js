@@ -30,26 +30,26 @@ function News(props) {
 
 
 
-      let endp="http://localhost:8800/books";
+      let endp="http://localhost:8800/news";
       
 
       switch(category){
         case "science":
-          endp="http://localhost:8800/books/science";
+          endp="http://localhost:8800/news/science";
           break;
         case "business":
-          endp="http://localhost:8800/books/business";
+          endp="http://localhost:8800/news/business";
           break;
         case "entertainment":
-          endp="http://localhost:8800/books/entertainment";
+          endp="http://localhost:8800/news/entertainment";
           break;
 
         case "sports":
-          endp="http://localhost:8800/books/sports";
+          endp="http://localhost:8800/news/sports";
           break;
 
         case "partners":
-          endp="http://localhost:8800/books/partners";
+          endp="http://localhost:8800/news/partners";
           break;
 
         default:

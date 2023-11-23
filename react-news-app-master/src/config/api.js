@@ -13,19 +13,19 @@ const API_KEY = "b01072db0b9dbb30a884bf020a9a0611";
 export const endpointPath = (country, category) => {
   switch (category) {
     case 'science':
-      return `localhost:8800/books/science`;
+      return `localhost:8800/news/science`;
     case 'entertainment':
-      return `localhost:8800/books/entertainment`;
+      return `localhost:8800/news/entertainment`;
     case 'sports':
-      return `localhost:8800/books/sports`;
+      return `localhost:8800/news/sports`;
     case 'business':
-      return `localhost:8800/books/business`;
+      return `localhost:8800/news/business`;
     // Add more cases as needed for different categories
 
     case 'partners':
-      return `localhost:8800/books/partners`;
+      return `localhost:8800/news/partners`;
     default:
-      return `localhost:8800/books`;
+      return `localhost:8800/news`;
   }
 };
 
@@ -34,4 +34,4 @@ export const endpointPath = (country, category) => {
 // export const endpointSearch = (searchQuery) =>
 //   `localhost:8800/books`;
 export const endpointSearch = (searchQuery) =>
-  `http://localhost:8800/books/search?query=${encodeURIComponent(searchQuery)}`;
+  `http://localhost:8800/news/search?query=${encodeURIComponent(searchQuery)}`;

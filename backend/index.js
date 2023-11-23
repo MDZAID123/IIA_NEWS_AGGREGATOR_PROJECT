@@ -29,7 +29,7 @@ app.get("/",(req,res)=>{
 
 })
 
-app.get("/books",(req,res)=>{
+app.get("/news",(req,res)=>{
     const q="SELECT * FROM global_view where image IS NOT NULL UNION ALL SELECT * FROM global_view WHERE image IS NULL;"
     db.query(q,(err,data)=>{
         if(err) return res.json(err)
@@ -38,7 +38,7 @@ app.get("/books",(req,res)=>{
 })
 
 
-app.get("/books/science", (req, res) => {
+app.get("/news/science", (req, res) => {
     const q = "SELECT * FROM global_view WHERE category='science'";
     db.query(q, (err, data) => {
         if(err) return res.json(err);
@@ -46,7 +46,7 @@ app.get("/books/science", (req, res) => {
     });
  });
 
-app.get("/books/sports", (req, res) => {
+app.get("/news/sports", (req, res) => {
     const q = "SELECT * FROM global_view WHERE category='sports'";
     db.query(q, (err, data) => {
         if(err) return res.json(err);
@@ -54,7 +54,7 @@ app.get("/books/sports", (req, res) => {
     });
  });
 
-app.get("/books/business", (req, res) => {
+app.get("/news/business", (req, res) => {
     const q = "SELECT * FROM global_view WHERE category='business'";
     db.query(q, (err, data) => {
         if(err) return res.json(err);
@@ -62,14 +62,14 @@ app.get("/books/business", (req, res) => {
     });
  });
 
-app.get("/books/entertainment", (req, res) => {
+app.get("/news/entertainment", (req, res) => {
     const q = "SELECT * FROM global_view WHERE category='entertainment'";
     db.query(q, (err, data) => {
         if(err) return res.json(err);
         return res.json(data);
     });
  });
- app.get("/books/search", (req, res) => {
+ app.get("/news/search", (req, res) => {
     const { query } = req.query;
 
     // Use parameterized query to prevent SQL injection
@@ -84,7 +84,7 @@ app.get("/books/entertainment", (req, res) => {
 
 //returning our news parteners
 
- app.get("/books/partners", (req, res) => {
+ app.get("/news/partners", (req, res) => {
     // const { query } = req.query;s
 
     // Use parameterized query to prevent SQL injection

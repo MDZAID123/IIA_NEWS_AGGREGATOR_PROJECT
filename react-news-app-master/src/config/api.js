@@ -22,6 +22,9 @@ export const endpointPath = (country, category) => {
 
     case 'partners':
       return `localhost:8800/news/partners`;
+
+    case 'general':
+      return `localhost:8800/news/general`;
     default:
       return `localhost:8800/news`;
   }

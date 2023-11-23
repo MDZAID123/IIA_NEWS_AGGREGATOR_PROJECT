@@ -20,7 +20,7 @@ export const navs = [
 export const router = [
 
   {path:"/partners",key:"partners",category:"partners",country:"us"},
-  { path: "/", key: "general", category: "general", country: "us" },
+  { path: "/", key: "meow", category: "meow", country: "us" },
   { path: "/categories/general", key: "general", category: "general", country: "us" },
   { path: "/categories/business", key: "business", category: "business", country: "us" },
   { path: "/categories/sports", key: "sports", category: "sports", country: "us" },

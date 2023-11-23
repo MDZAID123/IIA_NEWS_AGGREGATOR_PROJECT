@@ -51,8 +51,12 @@ function News(props) {
         case "partners":
           endp="http://localhost:8800/news/partners";
           break;
+        case "general":
+          endp="http://localhost:8800/news/general";
+          break;
 
         default:
+          endp="http://localhost:8800/news";
           break;
       }
       

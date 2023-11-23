@@ -30,6 +30,13 @@ app.get("/",(req,res)=>{
 })
 
 app.get("/news",(req,res)=>{
+    const q="SELECT * FROM global_view as t INNER JOIN (SELECT category, MAX(date) as max_date FROM global_view GROUP BY category) subq ON t.category = subq.category AND t.date = subq.max_date;"
+    db.query(q,(err,data)=>{
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+app.get("/news/general",(req,res)=>{
     const q="SELECT * FROM global_view where image IS NOT NULL UNION ALL SELECT * FROM global_view WHERE image IS NULL;"
     db.query(q,(err,data)=>{
         if(err) return res.json(err)

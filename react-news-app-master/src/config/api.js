@@ -1,6 +1,4 @@
-const API_DOMAIN = "https://gnews.io/api/v4/top-headlines?country=";
-const API_SEARCH_DOMAIN = "https://gnews.io/api/v4/search?q=";
-const API_KEY = "b01072db0b9dbb30a884bf020a9a0611";
+
 
 
 

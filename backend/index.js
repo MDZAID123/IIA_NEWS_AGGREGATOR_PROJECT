@@ -11,8 +11,8 @@ import mysql from "mysql";
 const db=mysql.createConnection({
     host:"localhost",
     user:"root",
-    password:"examination123",
-    database:"test"
+    password:"Happu@7869",
+    database:"final_db_v1"
 })
 
 //how we can reach our backend server
